@@ -24,28 +24,30 @@ class App extends Component {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then((response) => {return response.json()})
     .then((users) => {this.setState({robots:users})});
+
      
   }
 
   render() {
-        const {robots, searchValue} = this.state;
-        const filteredRobots = robots.filter((robot) => {
-            return  robot.name.toLowerCase().includes(searchValue)
-                });
+       
+       const present = this.state;
+       const filtredRobots = present.robots.filter((robot) => {
+       		return (
+       				robot.name.toLowerCase().includes(present.searchValue.toLowerCase())
+       			);
+       })
+       
+  		
+  		return (!present.robots? <h1>loading....</h1> :
+  			
+  			<div>
+  				<h1>Robo Friends</h1>
+  				<SearchBar searchFunc = { this.onSearch } />
+  				<RobotDisplay robots={filtredRobots} />
+  			</div>
+  			
+  			);
 
-        return (!robots.length?
-          <h1 className = 'h-100 mv0'>Loading</h1>:
-          <div className = 'tc'>
-            <h1>Robo Friends</h1>
-            <SearchBar onSearchchange={this.onSearch} />
-            <Scroll>
-              <RobotDisplay robots={filteredRobots} />
-            </Scroll>
-            <footer></footer>
-            
-          </div>
-        
-            );
        }
 }
 
