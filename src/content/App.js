@@ -5,6 +5,8 @@ import RobotDisplay from '../components/RobotDisplay';
 import SearchBar from '../components/SearchBar';
 import './App.css';
 import Scroll from '../components/Scroll';
+import Footer from '../components/Footer';
+import FooterContent from '../components/FooterContent';
 import 'tachyons';
 
 class App extends Component {
@@ -45,9 +47,11 @@ class App extends Component {
   				<h1 className="calendarFont f-subheadline">Robo Friends</h1>
   				<SearchBar searchFunc = { this.onSearch } />
   				<Scroll>
-  					<RobotDisplay robots={filteredRobots} />
-  					
+  					<RobotDisplay robots={filteredRobots} />  					
   				</Scroll >
+          <Footer>
+            <FooterContent />
+          </Footer>
   			</div>
   			
   			);

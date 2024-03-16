@@ -2,3 +2,7 @@
 
 	background: linear-gradient(135deg, #111111,#333333);
 }
+
+.m-width {
+	min-width: 15em;
+}
